@@ -21,11 +21,15 @@ public class BookingService {
         return bookingRepository.findById(id).orElse(null);
     }
 
-    public Booking createBooking(@RequestBody Booking booking) {
+    public Booking findByBusNumber(Long busNumber) {
+        return bookingRepository.findByBusNumber(busNumber).orElse(null);
+    }
+
+    public Booking createBooking(Booking booking) {
         return bookingRepository.save(booking);
     }
 
-    public Booking updateBooking(@PathVariable Long id, @RequestBody Booking updatedBooking) {
+    public Booking updateBooking(Long id, Booking updatedBooking) {
         return bookingRepository.findById(id)
                 .map(booking -> {
                     booking.setBookingNumber(updatedBooking.getBookingNumber());
@@ -40,7 +44,7 @@ public class BookingService {
                 .orElse(null);
     }
 
-    public void deleteBooking(@PathVariable Long id) {
+    public void deleteBooking(Long id) {
         bookingRepository.deleteById(id);
     }
 }
