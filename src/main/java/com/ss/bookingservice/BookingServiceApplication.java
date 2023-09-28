@@ -13,7 +13,7 @@ public class BookingServiceApplication {
 	public static void main(String[] args)
 	{
 		new SpringApplicationBuilder()
-				.profiles("dev")
+				.profiles("prod")
 				.sources(BookingServiceApplication.class)
 				.run(args);
 	}
